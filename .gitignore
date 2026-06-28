@@ -1,0 +1,38 @@
+# Variables de entorno (credenciales - NUNCA subir)
+.env
+.env.*
+!.env.example
+src/.env
+src/.env.*
+!src/.env.example
+
+# Dependencias (se regeneran con composer/npm install)
+src/vendor/
+src/node_modules/
+
+# Archivos generados por Laravel
+src/storage/*.key
+src/storage/app/*
+!src/storage/app/.gitkeep
+src/storage/framework/cache/*
+!src/storage/framework/cache/.gitkeep
+src/storage/framework/sessions/*
+!src/storage/framework/sessions/.gitkeep
+src/storage/framework/views/*
+!src/storage/framework/views/.gitkeep
+src/storage/logs/*.log
+src/bootstrap/cache/*.php
+!src/bootstrap/cache/.gitkeep
+
+# Base de datos local (si llegara a usarse SQLite en algún punto)
+src/database/*.sqlite
+
+# Archivos de IDE / sistema
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Docker (volúmenes locales, si se llegaran a montar como carpetas)
+docker/postgres-data/
