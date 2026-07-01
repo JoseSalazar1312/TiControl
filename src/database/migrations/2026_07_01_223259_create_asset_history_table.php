@@ -6,20 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('asset_history', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('equipment_id')->constrained('equipment');
+            $table->string('tipo_cambio');
+            $table->string('componente');
+            $table->string('valor_anterior')->nullable();
+            $table->string('valor_nuevo')->nullable();
+            $table->timestamp('fecha');
+            $table->foreignId('registrado_por')->constrained('system_users');
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('asset_history');

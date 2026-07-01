@@ -6,20 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('peripheral_assignments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('employee_id')->constrained('employees');
+            $table->foreignId('peripheral_id')->constrained('peripherals');
+            $table->timestamp('fecha_asignacion');
+            $table->timestamp('fecha_liberacion')->nullable();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('peripheral_assignments');
